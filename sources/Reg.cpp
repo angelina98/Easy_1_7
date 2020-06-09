@@ -6,8 +6,8 @@ namespace reg
     {
         int number = 0;
         std::ifstream X;
-        X.open(name);
-        if (!X.is_open())
+        enter.open(name);
+        if (!enter.is_open())
         {
             throw std::ios_base::failure("Error");
         }
@@ -16,23 +16,23 @@ namespace reg
             char j;
             std::string str;
             std::regex rx("([AaOoUuIiEeYy])");
-            while (X.get(j))
+            while (enter.get(j))
             {
                 str = j;
                 if (regex_search(str.data(), rx))
                     number++;
             }
         }
-        X.close();
+        enter.close();
         return number;
     }
 
     int one_letter(std::string name)
     {
         int number = 0;
-        std::ifstream X;
-        X.open(name);
-        if (!X.is_open())
+        std::ifstream enter;
+        enter.open(name);
+        if (!enter.is_open())
         {
             throw std::ios_base::failure("Error");
         }
@@ -40,14 +40,14 @@ namespace reg
         {
             std::string str;
             std::regex rx("([A-Za-z])");
-            while (!X.eof())
+            while (!enter.eof())
             {
-                X >> str;
+                enter >> str;
                 if (regex_match(str.data(), rx))
                     number++;
             }
         }
-        X.close();
+        enter.close();
         return number;
     }
 }
