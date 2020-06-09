@@ -5,7 +5,7 @@ namespace reg
     int vowels(std::string name)
     {
         int number = 0;
-        std::ifstream X;
+        std::ifstream enter;
         enter.open(name);
         if (!enter.is_open())
         {
